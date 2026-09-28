@@ -31,6 +31,7 @@ try:
         "SIM",
         "Não",
         "15",
+        "1/15",
         "Saída",
         "Automatico",
         "TESTE TESTE SCRIPT",
@@ -39,7 +40,7 @@ try:
     print("✅ Sucesso! Linha de teste inserida com sucesso na aba BASE!")
 except gspread.exceptions.SpreadsheetNotFound:
     print(
-        f"❌ Erro: Planilha '{NOME_PLANILHA}' não foi encontrada. Verifique o nome ou se compartilhou com o e-mail da Service Account."
+        f"❌ Erro: Planilha '{NAME_SHEET}' não foi encontrada. Verifique o nome ou se compartilhou com o e-mail da Service Account."
     )
 except gspread.exceptions.WorksheetNotFound:
     print(
