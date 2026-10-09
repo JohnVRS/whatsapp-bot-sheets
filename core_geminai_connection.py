@@ -5,7 +5,7 @@ from google import genai
 from google.genai import types
 from dotenv import load_dotenv
 
-load_dotenv
+load_dotenv()
 
 client = genai.Client()
 
@@ -51,7 +51,7 @@ def interpretar_mensagem(texto_mensagem: str) -> dict:
                 temperature=0.1
             )
         )
-        dados = json.load(response.text)
+        dados = json.loads(response.text)
         return dados
     except Exception as e:
         print(f"Erro ao processar mensagem com Gemini: {e}")
