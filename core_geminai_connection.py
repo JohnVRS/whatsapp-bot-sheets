@@ -24,21 +24,32 @@ def interpretar_mensagem(texto_mensagem: str) -> dict:
 
         Mensagem do usuário: "{texto_mensagem}"
         Você DEVE retornar APENAS objeto JSON com as seguintes chaves exatas:
+        -"Data": Data do caléndario atual.
+        -"Horário": Horário exato da inserção.
         -"Item": Nome curto ou descrição do item/serviço.
         -"Valor": Valor númerico(ex.: 45.50). apenas números int/float.
         -"Categoria": Classifique em uma destas: Alimentação, Transporte, Moradia, Lazer, Compras, Saúde, Eletrônicos, Serviços, Outros.
-        -"Tipo": "Sáida" (se for gasto/despesas) ou "Entrada" (se PIX, Sálario,rendimentos)
+        -"Método de Pagamento": Cartão débito ou cŕedito, Pix ou Dinheiro Físico.
+        -"Mensal": Item/Serviço com mensalidade .:Spotify, Netflix, Youtube Premium.
         -"Parcelado": "Sim" ou "Não".
         -"Parcela": "Texto informando quantas parcelas, se não informar nada é apenas 1/1".
-
+        -"Tipo": "Sáida" (se for gasto/despesas) ou "Entrada" (se PIX, Sálario,rendimentos).
+        -"Origem": "Automático".
+        -"Messagem Raw": Inserir a mensagem original de forma bruta.
         Exemplo de Saída esperada:
-        {{
+        {{  
+            "data": "09/10/2026",
+            "hora": "00:00:00",
             "item": "Boné",
             "valor": 250.50,
             "categoria": "Compras",
-            "tipo": "Saída",
+            "pagamento": "Pix",
+            "mensal": "Não",
             "parcelado": "Não",
-            "parcela"; "0"
+            "parcela"; "0",
+            "tipo": "Saída",
+            "origem": "Automática",
+            "raw": "Comprei um boné á vista no pix, valor de 250 reais" 
         }}
     """
     
