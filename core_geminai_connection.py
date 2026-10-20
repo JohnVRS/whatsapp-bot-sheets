@@ -2,6 +2,7 @@ from datetime import datetime
 import json
 import os
 from google import genai
+from google.genai.models import Models
 from google.genai import types
 from dotenv import load_dotenv
 
@@ -55,7 +56,7 @@ def interpretar_mensagem(texto_mensagem: str) -> dict:
     
     try:
         response = client.models.generate_content(
-            model='gemini-3.8-flash',
+            model='gemini-3.1-flash-lite',
             contents=prompt,
             config=types.GenerateContentConfig(  
                 response_mime_type="application/json",
@@ -63,6 +64,9 @@ def interpretar_mensagem(texto_mensagem: str) -> dict:
             )
         )
         dados = json.loads(response.text)
+
+
+
         return dados
     except Exception as e:
         print(f"Erro ao processar mensagem com Gemini: {e}")
