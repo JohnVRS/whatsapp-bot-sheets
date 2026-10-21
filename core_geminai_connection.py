@@ -34,6 +34,7 @@ def interpretar_mensagem(texto_mensagem: str) -> dict:
         -"Mensal": Item/Serviço com mensalidade .:Spotify, Netflix, Youtube Premium.
         -"Parcelado": "Sim" ou "Não".
         -"Parcela": "Texto informando quantas parcelas, se não informar nada é apenas 1/1".
+        -"Número de parcelas": "deve ser informado qual parcela aquela linha representa".
         -"Tipo": "Sáida" (se for gasto/despesas) ou "Entrada" (se PIX, Sálario,rendimentos).
         -"Origem": "Automático".
         -"Messagem Raw": Inserir a mensagem original de forma bruta.
@@ -48,6 +49,7 @@ def interpretar_mensagem(texto_mensagem: str) -> dict:
             "mensal": "Não",
             "parcelado": "Não",
             "parcela"; "0",
+            "n parcelas"; "12/12",
             "tipo": "Saída",
             "origem": "Automática",
             "raw": "Comprei um boné á vista no pix, valor de 250 reais" 
