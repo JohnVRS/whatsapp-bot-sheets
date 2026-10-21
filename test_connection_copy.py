@@ -1,6 +1,7 @@
 from codecs import utf_8_encode
 from datetime import datetime
 import gspread
+import json
 from core_geminai_connection import interpretar_mensagem
 from google.oauth2.service_account import  Credentials
 
@@ -21,21 +22,29 @@ try:
 
     data_atual = datetime.now().strftime("%d/%m/%Y")
     hora_atual = datetime.now().strftime("%H:%M:%S")
-    mensagem_teste = "Comprei uma bicicleta parcelada em 8x 100 reais. Valor total R$800.00"
+    mensagem_teste = "Assinei um serviço de streaming da Amazon, 24 Reais mensal"
     print(f" Testante frase: '{mensagem_teste}'\n")
 
-    ##PAREI AQUi
-    
     data_json = interpretar_mensagem(mensagem_teste)
-
-    for obj in data_json:
-        print(data_json)
-        print(len(data_json))
-
-        if (len[data_json] - 1):
-            aba_base.append_row(utf_8_encode(str(data_json)))
-        else:    
-            aba_base.append_row(utf_8_encode(data_json))
+    #lista = json.loads(data_json)
+    #print(type(data_json))
+    new_line = [
+            data_json['Data'],
+            data_json['Horário'],
+            data_json['Item'],
+            data_json['Valor'],
+            data_json['Categoria'],
+            data_json['Método de Pagamento'],
+            data_json['Mensal'],
+            data_json['Parcelado'],
+            data_json['Parcela'],
+            data_json['Tipo'],
+            data_json['Origem'],
+            data_json['Mensagem Raw'],
+        ]
+    print(new_line)
+    print(type(new_line))
+    aba_base.append_row(new_line)
     print("✅ Sucesso! Linha de teste inserida com sucesso na aba BASE!")
 
 except gspread.exceptions.SpreadsheetNotFound:
