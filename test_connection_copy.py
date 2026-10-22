@@ -22,12 +22,17 @@ try:
 
     data_atual = datetime.now().strftime("%d/%m/%Y")
     hora_atual = datetime.now().strftime("%H:%M:%S")
-    mensagem_teste = "Assinei um serviço de streaming da Amazon, 24 Reais mensal"
+    mensagem_teste = "Recebi meu salário no valor de 2000 na data 15/01/2002 as 14:00"
     print(f" Testante frase: '{mensagem_teste}'\n")
 
     data_json = interpretar_mensagem(mensagem_teste)
-    #lista = json.loads(data_json)
-    #print(type(data_json))
+
+
+    # CRIAR lógica para verificar se o item é parcelado, caso seja, inserir x vezes na planilha
+    # SE FOR MENSAL - inserir a quantidade restante de mêses do ano atual.
+    # Ajustar Horário.
+
+    
     new_line = [
             data_json['Data'],
             data_json['Horário'],
@@ -38,12 +43,13 @@ try:
             data_json['Mensal'],
             data_json['Parcelado'],
             data_json['Parcela'],
+            data_json['Número de parcelas'],
             data_json['Tipo'],
             data_json['Origem'],
             data_json['Mensagem Raw'],
         ]
-    print(new_line)
-    print(type(new_line))
+
+    print(data_json)
     aba_base.append_row(new_line)
     print("✅ Sucesso! Linha de teste inserida com sucesso na aba BASE!")
 
