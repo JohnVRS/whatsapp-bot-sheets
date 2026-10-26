@@ -32,7 +32,7 @@ def interpretar_mensagem(texto_mensagem: str) -> dict:
         -"Categoria": Classifique em uma destas: Alimentação, Transporte, Moradia, Lazer, Compras, Saúde, Eletrônicos, Serviços, Outros.
         -"Método de Pagamento": Cartão débito ou cŕedito, Pix ou Dinheiro Físico.
         -"Mensal": Item/Serviço com mensalidade .:Spotify, Netflix, Youtube Premium.
-        -"Parcelado": "Sim" ou "Não".
+        -"Parcelado": "Sim" ou "Não", caso seja SIM deve informar o valor por parcela.
         -"Parcela": "Texto informando quantas parcelas, se não informar nada é apenas 1/1".
         -"Número de parcelas": "deve ser informado qual parcela aquela linha representa".
         -"Tipo": "Sáida" (se for gasto/despesas) ou "Entrada" (se PIX, Sálario,rendimentos).
