@@ -22,35 +22,32 @@ try:
 
     data_atual = datetime.now().strftime("%d/%m/%Y")
     hora_atual = datetime.now().strftime("%H:%M:%S")
-    mensagem_teste = "Recebi meu salário no valor de 2000 na data 15/01/2002 as 14:00"
+    mensagem_teste = "Comprei uma bicicleta parcelada no cartão de crédito em 4x de 300 reais."
     print(f" Testante frase: '{mensagem_teste}'\n")
 
-    #data_json = interpretar_mensagem(mensagem_teste)
-
+    data_json = interpretar_mensagem(mensagem_teste)
 
     # CRIAR lógica para verificar se o item é parcelado, caso seja, inserir x vezes na planilha
-    # SE FOR MENSAL - inserir a quantidade restante de mêses do ano atual.
     # Ajustar Horário.
-
     
-    #new_line = [
-           # data_json['Data'],
-           # data_json['Horário'],
-           # data_json['Item'],
-           # data_json['Valor'],
-           # data_json['Categoria'],
-           # data_json['Método de Pagamento'],
-          #  data_json['Mensal'],
-          #  data_json['Parcelado'],
-         #   data_json['Parcela'],
-         #   data_json['Número de parcelas'],
-        #    data_json['Tipo'],
-       #     data_json['Origem'],
-      #      data_json['Mensagem Raw'],
-     #   ]
+    new_line = [
+            data_json['Data'],
+            data_json['Horário'],
+            data_json['Item'],
+            data_json['Valor'],
+            data_json['Categoria'],
+            data_json['Método de Pagamento'],
+            data_json['Mensal'],
+            data_json['Parcelado'],
+            data_json['Parcela'],
+            data_json['Número de parcelas'],
+            data_json['Tipo'],
+            data_json['Origem'],
+            data_json['Mensagem Raw'],
+        ]
 
-    #print(data_json)
-
+    print(data_json)
+    """
     new_line = [
         "01/09/2026",
         "14:00",
@@ -64,17 +61,15 @@ try:
         "1/4",
         "Saída",
         "Manual",
-        "Comprei uma bicicleta parcelada no cartão de crédito em 4x de 300 reais."
+        "Comprei uma bicicleta parcelada no cartão de crédito em 4 de 300 reais."
     ]
-
+    """
     if new_line[7] == "Sim":
-
-        for i in range(1,  int(new_line[8]) + 1 ):
-            new_line[9] = f"{i}/{new_line[8]}"
+        parcelas = int(new_line[8]) + 1 
+        for i in range(1,  parcelas):
+            new_line[9] = f"{i}/{parcelas - 1}"
             print(new_line[9])
             aba_base.append_row(new_line)    
-
-
     else:
         aba_base.append_row(new_line)
         print("✅ Sucesso! Linha de teste inserida com sucesso na aba BASE!")

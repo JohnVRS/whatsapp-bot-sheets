@@ -28,13 +28,13 @@ def interpretar_mensagem(texto_mensagem: str) -> dict:
         -"Data": Data do caléndario atual ou informação dada pelo úsuario, caso nãao haja nenhuma data especifica, coloque a data ATUAL.
         -"Horário": Horário exato da inserção.
         -"Item": Nome curto ou descrição do item/serviço.
-        -"Valor": Valor númerico(ex.: 45.50). apenas números int/float.
+        -"Valor": Valor númerico(ex.: 45.50). apenas números int/float (caso seja parcelado, VALOR DA PARCELA).
         -"Categoria": Classifique em uma destas: Alimentação, Transporte, Moradia, Lazer, Compras, Saúde, Eletrônicos, Serviços, Outros.
-        -"Método de Pagamento": Cartão débito ou cŕedito, Pix ou Dinheiro Físico.
-        -"Mensal": Item/Serviço com mensalidade .:Spotify, Netflix, Youtube Premium.
-        -"Parcelado": "Sim" ou "Não", caso seja SIM deve informar o valor por parcela.
-        -"Parcela": "Texto informando quantas parcelas, se não informar nada é apenas 1/1".
-        -"Número de parcelas": "deve ser informado qual parcela aquela linha representa".
+        -"Método de Pagamento": Cartão débito ou cŕedito, Pix ou Dinheiro Físico."
+        -"Mensal": Item/Serviço com mensalidade .:Spotify, Netflix, Youtube Premium."
+        -"Parcelado": "Sim" ou "Não"
+        -"Parcela": "Número de parcelas inteiras" se for parcelado em 4x o retorno deve ser 4 (DEVE SER APENAS O NUMERO sem letras)".
+        -"Número de parcelas": "Texto informando quantas parcelas, se não informar nada é apenas 1/1". 
         -"Tipo": "Sáida" (se for gasto/despesas) ou "Entrada" (se PIX, Sálario,rendimentos).
         -"Origem": "Automático".
         -"Messagem Raw": Inserir a mensagem original de forma bruta.
@@ -45,11 +45,11 @@ def interpretar_mensagem(texto_mensagem: str) -> dict:
             "item": "Boné",
             "valor": 250.50,
             "categoria": "Compras",
-            "pagamento": "Pix",
+            "pagamento": "Credito",
             "mensal": "Não",
-            "parcelado": "Não",
-            "parcela"; "0",
-            "n parcelas"; "12/12",
+            "parcelado": "Sim",
+            "parcela"; "4",
+            "n parcelas"; "1/4",
             "tipo": "Saída",
             "origem": "Automática",
             "raw": "Comprei um boné á vista no pix, valor de 250 reais" 
