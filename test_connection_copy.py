@@ -30,6 +30,8 @@ try:
     # CRIAR lógica para verificar se o item é parcelado, caso seja, inserir x vezes na planilha
     # Ajustar Horário.
     
+    data_json['Horário'] = hora_atual
+
     new_line = [
             data_json['Data'],
             data_json['Horário'],

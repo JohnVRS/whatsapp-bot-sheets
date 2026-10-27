@@ -26,7 +26,7 @@ def interpretar_mensagem(texto_mensagem: str) -> dict:
         Mensagem do usuário: "{texto_mensagem}"
         Você DEVE retornar APENAS objeto JSON com as seguintes chaves exatas:
         -"Data": Data do caléndario atual ou informação dada pelo úsuario, caso nãao haja nenhuma data especifica, coloque a data ATUAL.
-        -"Horário": Horário exato da inserção.
+        -"Horário": "Horário exato da inserção, Utilize o horário de Brasilia".
         -"Item": Nome curto ou descrição do item/serviço.
         -"Valor": Valor númerico(ex.: 45.50). apenas números int/float (caso seja parcelado, VALOR DA PARCELA).
         -"Categoria": Classifique em uma destas: Alimentação, Transporte, Moradia, Lazer, Compras, Saúde, Eletrônicos, Serviços, Outros.
