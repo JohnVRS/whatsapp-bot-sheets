@@ -2,7 +2,7 @@ from codecs import utf_8_encode
 from datetime import datetime
 import gspread
 import json
-from core_geminai_connection import interpretar_mensagem
+from services.gemini_service import interpretar_mensagem
 from google.oauth2.service_account import  Credentials
 
 SCOPES = [
@@ -16,7 +16,6 @@ cliente = gspread.authorize(credenciais)
 NAME_SHEET = "Gestão da grana - EM CONSTRUÇÃO"
 
 try:
-
     sheet = cliente.open(NAME_SHEET)
     aba_base = sheet.worksheet("BASE PRINCIPAL")
 
@@ -26,10 +25,6 @@ try:
     print(f" Testante frase: '{mensagem_teste}'\n")
 
     data_json = interpretar_mensagem(mensagem_teste)
-
-    # CRIAR lógica para verificar se o item é parcelado, caso seja, inserir x vezes na planilha
-    # Ajustar Horário.
-    
     data_json['Horário'] = hora_atual
 
     new_line = [
