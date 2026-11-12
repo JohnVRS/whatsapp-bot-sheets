@@ -7,9 +7,10 @@ def hello_world():
     return "<p> Hello, server!</p>"
 
 @app.route("/webhook", methods=['GET'])
-def verificarMetodo():
-    if request.method() == 'GET':
+def webhook():
+    if request.method == 'GET':
         token = request.args.get('hub.verify_token')
         desafio = request.args.get('hub.challenge')
 
         print(request.args)
+        return desafio
