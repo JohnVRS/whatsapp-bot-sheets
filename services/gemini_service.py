@@ -58,7 +58,7 @@ def interpretar_mensagem(texto_mensagem: str) -> dict:
     
     try:
         response = client.models.generate_content(
-            model='gemini-3.1-flash-lite',
+            model='gemini-3.5-flash-lite',
             contents=prompt,
             config=types.GenerateContentConfig(  
                 response_mime_type="application/json",
