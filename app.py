@@ -26,41 +26,18 @@ def webhook():
             return 'Token inválido', 403
 
     if request.method == 'POST':
-        jsonData = request.get_json() or {}
+        rawMessage = request.get_json() or {}
 
-        entries = jsonData.get('entry', [])
-        if not entries:
-            return "ENTRY NULL", 200
+        
 
-        changes = entries[0].get('changes', [])
-        if not changes:
-            return "CHANGES NULL", 200
-
-        value = changes[0].get('value', {})
-        rawMessage = value.get('messages', [])
-        if not rawMessage:
-            print("Evento sem mensagens ignorado.")
-            return "EVENT_RECEIVED", 200
-        message = rawMessage[0]
-
-        if message.get('type') == 'text':
-            messageBody = message.get('text', {}).get('body')
-
-            if messageBody:
-                geminiResponse = interpretar_mensagem(messageBody)
-                if geminiResponse:
-                    print(geminiResponse)
-                    inserirLinha(geminiResponse)
-
-
-        #message = rawMessage["entry"][0]["changes"][0]["value"]["messages"][0]["text"]["body"]
+        message = rawMessage["entry"][0]["changes"][0]["value"]["messages"][0]["text"]["body"]
         
 
        
             #enviar para gemini + gspread
-        #data_json = interpretar_mensagem(message)
-        #inserirLinha(data_json)
-        #print(data_json)
+        data_json = interpretar_mensagem(message)
+        inserirLinha(data_json)
+        print(data_json)
         
 
         return "EVENT_RECEIVED", 200

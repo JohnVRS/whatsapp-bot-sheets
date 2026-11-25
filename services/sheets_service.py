@@ -2,6 +2,7 @@ from codecs import utf_8_encode
 from datetime import datetime
 import gspread
 import json
+import traceback
 from services.gemini_service import interpretar_mensagem
 from google.oauth2.service_account import  Credentials
 
@@ -22,55 +23,31 @@ def inserirLinha(data_json):
         aba_base = sheet.worksheet("BASE PRINCIPAL")
 
         
-        data_atual = datetime.now().strftime("%d/%m/%Y")
-        hora_atual = datetime.now().strftime("%H:%M:%S")
-        
-        #mensagem_teste = "Comprei uma bicicleta parcelada no cartão de crédito em 4x de 300 reais."
-        #print(f" Testante frase: '{mensagem_teste}'\n")
-        #data_json = interpretar_mensagem(mensagem_teste)
-
-        data_json['Horário'] = hora_atual
 
         new_line = [
-                data_json['Data'],
-                data_json['Horário'],
-                data_json['Item'],
-                data_json['Valor'],
-                data_json['Categoria'],
-                data_json['Método de Pagamento'],
-                data_json['Mensal'],
-                data_json['Parcelado'],
-                data_json['Parcela'],
-                data_json['Número de parcelas'],
-                data_json['Tipo'],
-                data_json['Origem'],
-                data_json['Mensagem Raw'],
-            ]
+            data_json.get("Data", "00/00/0000") or data_json.get("data", "00/00/0000"),
+            data_json.get("Horário", "00:00:00") or data_json.get("horario", "00:00:00"),
+            data_json.get("Item", "") or data_json.get("item", ""),
+            data_json.get("Valor", "") or data_json.get("valor", ""),
+            data_json.get("Categoria", "") or data_json.get("categoria", ""),
+            data_json.get("Método de Pagamento") or data_json.get("metodo_de_pagamento", ""),
+            data_json.get("Mensal", "") or data_json.get("mensal", ""),
+            data_json.get("Parcelado", "") or data_json.get("parcelado", ""),
+            data_json.get("Parcela", "") or data_json.get("parcela", ""),
+            data_json.get("Número de parcelas", "") or data_json.get("numero_de_parcelas", ""),
+            data_json.get("Tipo", "") or data_json.get("tipo", ""),
+            data_json.get("Origem", "") or data_json.get("origem", ""),
+            data_json.get("Mensagem Raw", "") or data_json.get("mensagem_raw", "")
 
-        print(data_json)
-        """
-        new_line = [
-            "01/09/2026",
-            "14:00",
-            "Bicicleta",
-            "1200",
-            "Compras",
-            "Cartão de Crédito",
-            "Não",
-            "Sim",
-            "4",
-            "1/4",
-            "Saída",
-            "Manual",
-            "Comprei uma bicicleta parcelada no cartão de crédito em 4 de 300 reais."
         ]
-        """
+
         if new_line[7] == "Sim":
             parcelas = int(new_line[8]) + 1 
             for i in range(1,  parcelas):
                 new_line[9] = f"{i}/{parcelas - 1}"
                 print(new_line[9])
                 aba_base.append_row(new_line)    
+            print("✅ Sucesso! Linha de teste inserida com sucesso na aba BASE!")
         else:
             aba_base.append_row(new_line)
             print("✅ Sucesso! Linha de teste inserida com sucesso na aba BASE!")
@@ -85,4 +62,6 @@ def inserirLinha(data_json):
         )
     except Exception as e:
         print(f"❌ Ocorreu um erro inesperado: {e}")
+        traceback.print_exc()
+
 

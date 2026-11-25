@@ -19,7 +19,7 @@ curl -i -X POST http://127.0.0.1:5000/webhook \
             "from": "5551999999999",
             "id": "wamid.HBgNNTU1MTk5OTk5OTk5ORUCABIY...",
             "timestamp": "1731530000",
-            "text": { "body": "Fiz rancho com 500 reais parcelado " },
+            "text": { "body": "Fui ao shopping as 14:00, e gastei 80 reais de estacionamento e 100 reais de lanche, tudo no pix" },
             "type": "text"
           }]
         },
