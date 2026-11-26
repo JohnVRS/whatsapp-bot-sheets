@@ -37,7 +37,7 @@ def interpretar_mensagem(texto_mensagem: str) -> dict:
         -"Número de parcelas": "Texto informando quantas parcelas, se não informar nada é apenas 1/1". 
         -"Tipo": "Sáida" (se for gasto/despesas) ou "Entrada" (se PIX, Sálario,rendimentos).
         -"Origem": "Automático".
-        -"Messagem Raw": Inserir a mensagem original de forma bruta.
+        -"Mensagem Raw": Inserir a mensagem original de forma bruta.
         Exemplo de Saída esperada:
         {{  
             "data": "09/10/2026",

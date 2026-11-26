@@ -51,4 +51,6 @@ def webhook():
                 geminiResponse = interpretar_mensagem(rawMessage)
                 inserirLinha(geminiResponse)
 
+                print(geminiResponse)
+
         return "EVENT_RECEIVED", 200

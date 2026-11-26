@@ -22,8 +22,6 @@ def inserirLinha(data_json):
         sheet = cliente.open(NAME_SHEET)
         aba_base = sheet.worksheet("BASE PRINCIPAL")
 
-        
-
         new_line = [
             data_json.get("Data", "00/00/0000") or data_json.get("data", "00/00/0000"),
             data_json.get("Horário", "00:00:00") or data_json.get("horario", "00:00:00"),
@@ -45,7 +43,6 @@ def inserirLinha(data_json):
             parcelas = int(new_line[8]) + 1 
             for i in range(1,  parcelas):
                 new_line[9] = f"{i}/{parcelas - 1}"
-                print(new_line[9])
                 aba_base.append_row(new_line)    
             print("✅ Sucesso! Linha de teste inserida com sucesso na aba BASE!")
         else:
@@ -62,6 +59,5 @@ def inserirLinha(data_json):
         )
     except Exception as e:
         print(f"❌ Ocorreu um erro inesperado: {e}")
-        traceback.print_exc()
-
+        
 
